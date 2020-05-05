@@ -1,0 +1,35 @@
+body.timerpopup {
+  height: 100vh;
+  background-color: #00000038;
+}
+#progress {
+  width: 100%;
+  border-radius: 20px;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+#timeBar {
+  width: 1%;
+  height: 9px;
+  border-radius: 20px;
+  background-color: #28a745;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.05)
+  );
+  transition: 0.98s linear;
+  /* transition-property: width, background-color;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25),
+    inset 0 1px rgba(255, 255, 255, 0.1); */
+}
+.card-text {
+  margin: 0;
+}
+
+.st-loader {
+  width: 100%;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.05);
+}

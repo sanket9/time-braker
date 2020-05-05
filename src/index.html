@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Hello World!</title>
+  </head>
+  <body class="timerpopup">
+    <div class="container h-100">
+      <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6 text-center">
+          <img src="../images/eye-rest.jpg" class="w-75" alt="" srcset="" />
+          <div class="card">
+            <h1 class="text-dark">Take Eye Brake.</h1>
+            <div class="card-body">
+              <div id="progress">
+                <div id="timeBar"></div>
+              </div>
+              <p class="card-text">This is some text within a card body.</p>
+            </div>
+            <div class="card-footer d-flex justify-content-around">
+              <button
+                type="submit"
+                class="btn btn-primary btn-sm"
+                id="snooze-1-btn"
+              >
+                Snooze for 1hr
+              </button>
+              <button
+                type="button"
+                class="btn btn-info btn-sm"
+                id="snooze-2-btn"
+              >
+                Snooze for 2hr
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm"
+                id="close-btn"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script>
+  </body>
+</html>
