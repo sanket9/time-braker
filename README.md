@@ -1,9 +1,7 @@
 # Brake Timer
 
-**Clone and run for a quick way to see Electron in action.**
-
-
-You can learn more about each of these components within the [Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start).
+**Clone and run for a quick demo.**
+This app will remind your's Drinking Brake and A quick Stretch brake in productuive mode. That will help for good life style and good more productive habit.  
 
 ## To Use
 
@@ -11,9 +9,9 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 
 ```bash
 # Clone this repository
-git clone https://github.com/electron/electron-quick-start
+git clone
 # Go into the repository
-cd electron-quick-start
+cd time-braker
 # Install dependencies
 npm install
 # Run the app
