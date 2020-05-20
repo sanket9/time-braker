@@ -36,8 +36,8 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-// app.whenReady().then(createWindow);
-app.whenReady().then(crateSettingWindow);
+app.whenReady().then(createWindow);
+// app.whenReady().then(crateSettingWindow);
 
 // Quit when all windows are closed.
 app.on("window-all-closed", function () {
@@ -84,8 +84,8 @@ app.on("ready", () => {
 /* Create  Settings Window*/
 function crateSettingWindow() {
   const settingsWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 900,
+    height: 700,
     frame: true,
     center: true,
     show: true,

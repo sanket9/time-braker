@@ -4,16 +4,24 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
-const remote = require("electron").remote;
+const { BrowserWindow } = require("electron");
 const $ = require("jquery");
 const moment = require("moment");
 const path = require("path");
 const nativeImage = require("electron").nativeImage;
+const storage = require("electron-json-storage");
+
+/* 
+  ? Require Node module
+*/
+const os = require("os");
+const fs = require("fs");
 
 let progressBarWidth = 0;
 let snoozeStartTime = null;
 let snoozeFor;
 let isTimerPopupOn = false;
+const computerName = `${os.hostname()}-${os.userInfo().username}`;
 const alreadyTimeShownFor = {
   eye: false,
   water: false,
@@ -38,6 +46,35 @@ var timeCounter = {
   modalTimeInterval: null,
   snoozeTimeInterval: null,
 };
+
+/*
+ * *App Starts Here.⭐
+ */
+async function initApp() {
+  console.log("hosted at", computerName);
+  courentTime = moment().format();
+  const dataPath = storage.getDataPath();
+  console.log(dataPath);
+  storage.get("expireAt", function (error, data) {
+    if (error) throw error;
+    if (!data.hasOwnProperty("appInstled")) {
+      storage.set("expireAt", { appInstled: courentTime }, (err) => {
+        if (err) throw error;
+      });
+      allwaysBackProcess();
+    } else {
+      let appInsted = moment(data.appInstled);
+      let curentdate = moment();
+      if (curentdate.diff(appInsted, "month") > 6) {
+        crateSettingWindow();
+      } else {
+        allwaysBackProcess();
+      }
+      console.log(curentdate.diff(appInsted, "month"));
+    }
+  });
+  localStorage.setItem("appOntime", courentTime);
+}
 
 $("#close-btn").on("click", (e) => {
   remote.getCurrentWindow().hide();
@@ -69,12 +106,6 @@ btn2.addEventListener("click", (e) => {
   clearInterval(timeCounter.backGroundTimer);
   checkSnoozeTimeComplete();
 });
-
-async function initApp() {
-  courentTime = moment().format();
-  localStorage.setItem("appOntime", courentTime);
-  allwaysBackProcess();
-}
 
 function allwaysBackProcess() {
   // elem.style.width = 0 + "%";
@@ -115,16 +146,16 @@ function showinterValWithTime(time) {
   let timeInterval = 100 / Number(time);
   let remainTime = 0;
   if (activeTypeBrake == "stretch") {
-    let iconPath = path.join(__dirname, "/images/stretch.gif");
+    let iconPath = path.join(__dirname, "../images/stretch.gif");
     const image = nativeImage.createFromPath(iconPath);
 
     img.src = iconPath;
   } else if (activeTypeBrake == "eye") {
-    let iconPath = path.join(__dirname, "/images/tenor.gif");
+    let iconPath = path.join(__dirname, "../images/tenor.gif");
     const image = nativeImage.createFromPath(iconPath);
     img.src = iconPath;
   } else {
-    let iconPath = path.join(__dirname, "/images/drink-water.jpg");
+    let iconPath = path.join(__dirname, "../images/drink-water.jpg");
     const image = nativeImage.createFromPath(iconPath);
     img.src = iconPath;
   }
@@ -169,5 +200,26 @@ function checkSnoozeTimeComplete() {
     }
   }, 60000);
 }
+function crateSettingWindow() {
+  const settingsWindow = new BrowserWindow({
+    width: 900,
+    height: 700,
+    frame: true,
+    center: true,
+    show: true,
+    autoHideMenuBar: true,
+    fullscreenable: true,
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
 
+  settingsWindow.loadFile(path.join(__dirname, "src/settings.html"));
+  // Open the DevTools.
+  settingsWindow.webContents.openDevTools({ mode: "detach" });
+
+  settingsWindow.on("closed", () => {
+    console.log("Settings Colosed..");
+  });
+}
 initApp();

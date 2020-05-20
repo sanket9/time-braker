@@ -3,17 +3,16 @@
   <head>
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
+      content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'"
     />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
+
     <link
       rel="stylesheet"
       href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
     <title>Settings</title>
   </head>
   <body>
@@ -29,6 +28,121 @@
       <div class="row d-flex justify-content-center">
         <h5>Using Application in Trial mode. Expire in <b>12 Days</b></h5>
       </div>
+      <div
+        class="alert alert-success alert-dismissible fade"
+        id="feedbackAlert"
+        role="alert"
+      >
+        <strong>Thanks!</strong> For your's valuable feedback.
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="row mb-5">
+        <div class="col-4">
+          <div
+            class="nav flex-column nav-pills"
+            id="v-pills-tab"
+            role="tablist"
+            aria-orientation="vertical"
+          >
+            <a
+              class="nav-link active"
+              id="v-pills-settings-tab"
+              data-toggle="pill"
+              href="#v-pills-settings"
+              role="tab"
+              aria-controls="v-pills-settings"
+              aria-selected="true"
+              >Feedback Us</a
+            >
+            <a
+              class="nav-link"
+              id="v-pills-home-tab"
+              data-toggle="pill"
+              href="#v-pills-home"
+              role="tab"
+              aria-controls="v-pills-home"
+              aria-selected="false"
+              >Activate with Key</a
+            >
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="tab-content" id="v-pills-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="v-pills-settings"
+              role="tabpanel"
+              aria-labelledby="v-pills-settings-tab"
+            >
+              <form id="feedbackFrm">
+                <div class="form-group">
+                  <label for="feedbackName">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="feedbackName"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="feedbackMsg">Feedback</label>
+                  <textarea
+                    name="feedbackMsg"
+                    id="feedbackMsg"
+                    class="form-control"
+                    cols="30"
+                    rows="10"
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="feedbackMsg">Rating</label>
+                  <div class="m-3" id="ratingMyapp"></div>
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  id="feedbackSubmit"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="v-pills-home"
+              role="tabpanel"
+              aria-labelledby="v-pills-home-tab"
+            >
+              <form>
+                <div class="form-group">
+                  <label for="useremail">Email address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="useremail"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="keygen">KEY</label>
+                  <input type="text" class="form-control" id="keygen" />
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <script src="./settings.js"></script>
+    <script src="emotion-ratings.js"></script>
   </body>
 </html>
