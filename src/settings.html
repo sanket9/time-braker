@@ -26,7 +26,10 @@
         <h2>Settings</h2>
       </div>
       <div class="row d-flex justify-content-center">
-        <h5>Using Application in Trial mode. Expire in <b>12 Days</b></h5>
+        <h5>
+          Using Application in Trial mode. Expire in
+          <b id="updateDays">12 Days</b>
+        </h5>
       </div>
       <div
         class="alert alert-success alert-dismissible fade"
@@ -43,7 +46,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="row mb-5">
+      <div class="row">
         <div class="col-4">
           <div
             class="nav flex-column nav-pills"
@@ -116,9 +119,10 @@
               </form>
             </div>
             <div
-              class="tab-pane fade"
+              class="tab-pane fade d-flex justify-content-between flex-column"
               id="v-pills-home"
               role="tabpanel"
+              style="height: 45vh;"
               aria-labelledby="v-pills-home-tab"
             >
               <form>
@@ -137,6 +141,16 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
+              <div class="d-flex justify-content-between">
+                <span>
+                  Contact Me
+                  <a
+                    href="mailto:sanket.mukherjee@gmail.com"
+                    class="text-center"
+                    >Sanket Mukherjee</a
+                  >
+                </span>
+              </div>
             </div>
           </div>
         </div>

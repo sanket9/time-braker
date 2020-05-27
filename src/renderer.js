@@ -4,7 +4,7 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
-const { BrowserWindow } = require("electron");
+const { BrowserWindow } = require("electron").remote;
 const $ = require("jquery");
 const moment = require("moment");
 const path = require("path");
@@ -58,14 +58,19 @@ async function initApp() {
   storage.get("expireAt", function (error, data) {
     if (error) throw error;
     if (!data.hasOwnProperty("appInstled")) {
-      storage.set("expireAt", { appInstled: courentTime }, (err) => {
-        if (err) throw error;
-      });
+      storage.set(
+        "expireAt",
+        { appInstled: courentTime, expire: moment().add(6, "months").format() },
+        (err) => {
+          if (err) throw error;
+        }
+      );
       allwaysBackProcess();
     } else {
       let appInsted = moment(data.appInstled);
+      let expire = moment(data.expire);
       let curentdate = moment();
-      if (curentdate.diff(appInsted, "month") > 6) {
+      if (curentdate.diff(appInsted, "month") > 6 && curentdate > expire) {
         crateSettingWindow();
       } else {
         allwaysBackProcess();
@@ -214,9 +219,9 @@ function crateSettingWindow() {
     },
   });
 
-  settingsWindow.loadFile(path.join(__dirname, "src/settings.html"));
+  settingsWindow.loadFile(path.join(__dirname, "settings.html"));
   // Open the DevTools.
-  settingsWindow.webContents.openDevTools({ mode: "detach" });
+  // settingsWindow.webContents.openDevTools({ mode: "detach" });
 
   settingsWindow.on("closed", () => {
     console.log("Settings Colosed..");

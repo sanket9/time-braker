@@ -1,6 +1,6 @@
 {
   "name": "Time-Braker",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
@@ -10,11 +10,9 @@
     "dist": "electron-builder"
   },
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "time-braker",
+    "more-focoused",
+    "more productive"
   ],
   "build": {
     "appId": "com.sanket.braketimer",

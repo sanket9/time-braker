@@ -26,7 +26,7 @@ function createWindow() {
   // mainWindow.maximize();
   mainWindow.loadFile(path.join(__dirname, "src/index.html"));
   // Open the DevTools.
-  mainWindow.webContents.openDevTools({ mode: "detach" });
+  // mainWindow.webContents.openDevTools({ mode: "detach" });
 
   mainWindow.on("hide", () => {
     console.log("Executed..");
@@ -98,7 +98,7 @@ function crateSettingWindow() {
 
   settingsWindow.loadFile(path.join(__dirname, "src/settings.html"));
   // Open the DevTools.
-  settingsWindow.webContents.openDevTools({ mode: "detach" });
+  // settingsWindow.webContents.openDevTools({ mode: "detach" });
 
   settingsWindow.on("closed", () => {
     console.log("Settings Colosed..");

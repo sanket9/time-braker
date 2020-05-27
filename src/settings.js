@@ -6,7 +6,8 @@ require("popper.js");
 require("bootstrap/dist/js/bootstrap");
 const nativeImage = require("electron").nativeImage;
 const firebaseConfig = require("./firebase");
-// const admin = require("firebase-admin");
+const storage = require("electron-json-storage");
+
 const os = require("os");
 const fs = require("fs");
 
@@ -16,13 +17,20 @@ const db = firebase.firestore();
 var emotionsArray = ["angry", "disappointed", "meh", "happy", "inlove"];
 const computerName = `${os.hostname()}-${os.userInfo().username}`;
 const feedbackSubmitBtn = document.getElementById("feedbackSubmit");
-
+const dateValue = document.getElementById("updateDays");
 $(document).ready(function () {
   $("#ratingMyapp").emotionsRating({
     emotions: emotionsArray,
     bgEmotion: "happy",
     count: 5,
     inputName: "ratings",
+  });
+
+  storage.get("expireAt", function (error, data) {
+    // console.log(data);
+    let expiredate = moment(data.expire);
+    let curentdate = moment();
+    dateValue.innerText = `${expiredate.diff(curentdate, "days")} Days`;
   });
 });
 feedbackSubmitBtn.addEventListener("click", (e) => {

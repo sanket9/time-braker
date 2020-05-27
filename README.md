@@ -1,7 +1,7 @@
 # Brake Timer
 
 **Clone and run for a quick demo.**
-This app will remind your's Drinking Brake and A quick Stretch brake in productuive mode. That will help for good life style and good more productive habit.  
+This app will remind your's Drinking Brake and A quick Stretch brake in productuive mode. That will help for good life style and good more productive habit.
 
 ## To Use
 
@@ -18,15 +18,11 @@ npm install
 npm start
 ```
 
-Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
+# **Feature**
 
-## Resources for Learning Electron
-
-- [electronjs.org/docs](https://electronjs.org/docs) - all of Electron's documentation
-- [electronjs.org/community#boilerplates](https://electronjs.org/community#boilerplates) - sample starter apps created by the community
-- [electron/electron-quick-start](https://github.com/electron/electron-quick-start) - a very basic starter Electron app
-- [electron/electron-api-demos](https://github.com/electron/electron-api-demos) - an Electron app that teaches you how to use Electron
-- [hokein/electron-sample-apps](https://github.com/hokein/electron-sample-apps) - small demo apps for the various Electron APIs
+    [x] Eye Braker
+    [x] Dehydrate Reminder
+    [x] Quick Stretch
 
 ## License
 
