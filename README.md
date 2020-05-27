@@ -22,7 +22,7 @@ npm start
 
     [x] Eye Braker
     [x] Dehydrate Reminder
-    [x] Quick Stretch
+    [x] Quick Stretch Reminder
 
 ## License
 
