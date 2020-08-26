@@ -26,7 +26,7 @@ function createWindow() {
   // mainWindow.maximize();
   mainWindow.loadFile(path.join(__dirname, "src/index.html"));
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools({ mode: "detach" });
+  mainWindow.webContents.openDevTools({ mode: "detach" });
 
   mainWindow.on("hide", () => {
     console.log("Executed..");

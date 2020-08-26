@@ -4,7 +4,8 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
-const { BrowserWindow } = require("electron").remote;
+const { remote } = require("electron");
+const { BrowserWindow } = remote;
 const $ = require("jquery");
 const moment = require("moment");
 const path = require("path");
